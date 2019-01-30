@@ -184,7 +184,7 @@ def read_cells(archive, ignore_sheets = [], ignore_hidden = False):
                         else:
                             cell['f'] = child.text
 
-                    elif child.tag == '{%s}v' % SHEET_MAIN_NS :
+                    elif child.tag == '{%s}v' % SHEET_MAIN_NS and child.text is not None: # CK: This all requires child.text
                         if cell_data_type == 's' or cell_data_type == 'str': # value is a string
                             try: # if it fails, it means that cell content is a string calculated from a formula
                                 cell['v'] = shared_strings[int(child.text)]
@@ -195,8 +195,8 @@ def read_cells(archive, ignore_sheets = [], ignore_hidden = False):
                         elif cell_data_type == 'n':
                             cell['v'] = _cast_number(child.text)
 
-                    elif child.text is None:
-                        continue
+#                    elif child.text is None:
+#                        continue
 
                 if cell['f'] is not None:
 
