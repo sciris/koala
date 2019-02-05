@@ -364,6 +364,8 @@ class FunctionNode(ASTNode):
                 return 'offset(' + ",".join([n.emit(ast,context=context) for n in args]) + ")"
             else:
                 return 'self.eval_ref(offset(%s), ref = %s)' % (",".join([n.emit(ast,context=context) for n in args]), self.ref)
+        elif fun == 'row':
+            return self.ref[0]
         else:
             # map to the correct name
             f = self.funmap.get(fun,fun)
