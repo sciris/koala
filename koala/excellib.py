@@ -42,6 +42,8 @@ FUNCTION_MAP = {
     "round": "xround",
     "true": "xtrue",
     "false": "xfalse",
+    "_xlfn.norm.inv": "xnorminv",
+    "_xlfn.norm.dist": "xnormdist",
 }
 
 IND_FUN = [
@@ -917,12 +919,17 @@ def pmt(*args): # Excel reference: https://support.office.com/en-us/article/PMT-
     # type = args[4]
     return -present_value * rate / (1 - np.power(1 + rate, -num_payments))
 
-# CK: added functions
 def xtrue(*args):
    return True
 
 def xfalse(*args):
    return False
+
+def xnorminv(*args):
+    return 1 # TODO - implement
+
+def xnormdist(*args):
+    return 1 # TODO - implement
 
 if __name__ == '__main__':
     pass
