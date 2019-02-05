@@ -39,7 +39,10 @@ FUNCTION_MAP = {
     "max":"xmax",
     "sum":"xsum",
     "gammaln":"lgamma",
-    "round": "xround"
+    "round": "xround",
+    "true": "xtrue",
+    "false": "xfalse",
+    "row": "xrow",
 }
 
 IND_FUN = [
@@ -914,6 +917,18 @@ def pmt(*args): # Excel reference: https://support.office.com/en-us/article/PMT-
     # fv = args[3]
     # type = args[4]
     return -present_value * rate / (1 - np.power(1 + rate, -num_payments))
+
+
+# CK: added functions
+def xtrue(*args):
+    return True
+
+def xfalse(*args):
+    return False  
+
+def xrow(*args):
+    print('hiiiii %s' % repr(args))
+    import traceback; traceback.print_exc(); import pdb; pdb.set_trace()
 
 
 if __name__ == '__main__':
