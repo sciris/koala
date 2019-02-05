@@ -300,7 +300,10 @@ class FunctionNode(ASTNode):
         fun = self.tvalue.lower()
 
         # Get the arguments
-        args = self.children(ast)
+        if ast.nodes:
+            args = self.children(ast)
+        else:
+            args = []
 
         if fun == "atan2":
             # swap arguments
